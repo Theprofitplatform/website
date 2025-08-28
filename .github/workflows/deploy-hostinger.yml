@@ -14,6 +14,13 @@ jobs:
     - name: 🚚 Checkout code
       uses: actions/checkout@v4
       
+    - name: 🔍 Debug - List local files
+      run: |
+        echo "=== Local wp-content structure ==="
+        find ./wp-content -type f | head -20
+        echo "=== Theme files ==="
+        ls -la ./wp-content/themes/kadence-pp-child/
+        
     - name: 📂 Sync files to Hostinger
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
@@ -21,7 +28,7 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         port: ${{ secrets.FTP_PORT }}
-        protocol: ftps # Secure FTP
+        protocol: ftp # Regular FTP (not FTPS)
         
         # Upload only WordPress content to correct directories
         local-dir: ./wp-content/
@@ -33,9 +40,10 @@ jobs:
           **/.DS_Store
           **/Thumbs.db
           
-        # Additional options
-        dry-run: false # Set to true for testing
-        log-level: verbose # For debugging
+        # Force upload and verbose logging
+        dry-run: false
+        log-level: verbose
+        dangerous-clean-slate: false
         
     - name: ✅ Deployment complete
       run: |
