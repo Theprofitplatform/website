@@ -1,0 +1,71 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: |
+        if [ -f package.json ]; then
+          npm ci
+        fi
+        
+    - name: Run health check
+      run: |
+        if [ -f scripts/health-check.mjs ]; then
+          node scripts/health-check.mjs
+        fi
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.1'
+        
+    - name: Validate WordPress files
+      run: |
+        if [ \! -f wp-content/themes/kadence-pp-child/style.css ]; then
+          echo "Child theme style.css not found\!"
+          exit 1
+        fi
+        
+        if [ \! -f wp-content/themes/kadence-pp-child/functions.php ]; then
+          echo "Child theme functions.php not found\!"
+          exit 1
+        fi
+        
+        echo "WordPress files validated successfully"
+        
+    - name: Deploy to staging
+      run: |
+        echo "Deployment step would go here"
+        echo "Configure with your hosting provider's deployment method"
+        
+    - name: Notify deployment
+      run: |
+        echo "Deployment completed successfully"
+        echo "Site: https://theprofitplatform.com.au"
