@@ -1,14 +1,311 @@
 /*
  * The Profit Platform - Custom CSS
  * Additional styles for enhanced functionality
+ * Enhanced with Kadence Blocks conversion styles
  * 
  * @package Kadence_PP_Child
- * @version 1.0.0
+ * @version 1.2.0
  */
+
+/* ===========================
+   CSS VARIABLES (Kadence Compatible)
+   =========================== */
+
+:root {
+    /* Primary Colors */
+    --pp-primary: #2c86f9;
+    --pp-primary-dark: #1e6ee8;
+    --pp-black: #0f172a;
+    --pp-white: #ffffff;
+    
+    /* Gray Scale */
+    --pp-gray-50: #f8fafc;
+    --pp-gray-100: #f1f5f9;
+    --pp-gray-200: #e2e8f0;
+    --pp-gray-300: #cbd5e1;
+    --pp-gray-400: #94a3b8;
+    --pp-gray-500: #64748b;
+    --pp-gray-600: #475569;
+    --pp-gray-700: #334155;
+    --pp-gray-800: #1e293b;
+    --pp-gray-900: #0f172a;
+    
+    /* Semantic Colors */
+    --pp-success: #10b981;
+    --pp-warning: #f59e0b;
+    --pp-danger: #ef4444;
+    
+    /* Border Radius */
+    --pp-radius: 16px;
+    --pp-radius-sm: 8px;
+    --pp-radius-lg: 24px;
+    --pp-border-radius: 16px;
+    --pp-border-radius-lg: 24px;
+    
+    /* Shadows */
+    --pp-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --pp-shadow: 0 4px 20px rgba(15, 23, 42, .08);
+    --pp-shadow-lg: 0 20px 40px rgba(15, 23, 42, .12);
+    --pp-shadow-xl: 0 25px 50px rgba(0, 0, 0, .15);
+    
+    /* Transitions */
+    --pp-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Gradients */
+    --pp-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --pp-gradient-light: linear-gradient(135deg, #a7c0f2 0%, #d6b3e8 100%);
+    --pp-gradient-dark: linear-gradient(135deg, #1e6ee8 0%, #0f4bb2 100%);
+    --pp-gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    --pp-gradient-warning: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    --pp-gradient-danger: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+}
+
+/* ===========================
+   ENHANCED HERO SECTION
+   =========================== */
+
+.hero-section {
+    background: linear-gradient(135deg, #f8fafc 0%, #fff 50%, #f0f9ff 100%);
+    position: relative;
+    overflow: hidden;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    padding: 160px 0 100px;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(44, 134, 249, 0.05) 0%, transparent 70%);
+    animation: float 20s ease-in-out infinite;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 30px;
+    color: var(--pp-black);
+}
+
+.highlight-text {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+}
+
+.location-text {
+    color: #059669 !important;
+    font-weight: 700;
+    position: relative;
+}
+
+.title-underline {
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--pp-primary), transparent);
+    border-radius: 2px;
+    animation: expandLine 1.5s ease-out 1s both;
+}
+
+.hero-subtitle {
+    font-size: 1.35rem;
+    color: var(--pp-gray-600);
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.hero-bullets .kb-icon-list-item {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 500;
+    color: var(--pp-gray-800);
+    transition: all 0.3s ease;
+}
+
+.hero-bullets .kb-icon-list-item:hover {
+    color: var(--pp-primary);
+    transform: translateX(5px);
+}
+
+.hero-bullets .kb-icon {
+    color: var(--pp-primary);
+    font-size: 1.2rem;
+}
+
+/* Floating Stats for Hero Image */
+.floating-stats {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.stat-card {
+    position: absolute;
+    background: white;
+    padding: 20px;
+    border-radius: var(--pp-radius);
+    box-shadow: var(--pp-shadow-lg);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-width: 180px;
+    animation: float-cards 6s ease-in-out infinite;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.stat-1 { top: 20%; left: -60px; animation-delay: 0s; }
+.stat-2 { bottom: 30%; right: -80px; animation-delay: 2s; }
+.stat-3 { top: 10%; right: -40px; animation-delay: 4s; }
+
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.stat-1 .stat-icon { background: linear-gradient(135deg, #667eea, #764ba2); }
+.stat-2 .stat-icon { background: linear-gradient(135deg, #f093fb, #f5576c); }
+.stat-3 .stat-icon { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--pp-black);
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--pp-gray-600);
+    font-weight: 500;
+}
+
+/* ===========================
+   TRUST BAR SECTION
+   =========================== */
+
+.trust-bar {
+    background: white;
+    padding: 40px 0;
+    border-top: 1px solid var(--pp-gray-200);
+    border-bottom: 1px solid var(--pp-gray-200);
+}
+
+.trust-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.trust-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    background: var(--pp-gray-50);
+    border-radius: var(--pp-radius-sm);
+    transition: var(--pp-transition);
+}
+
+.trust-item:hover {
+    transform: translateY(-2px);
+    background: var(--pp-gray-100);
+}
+
+.trust-item strong {
+    color: var(--pp-black);
+    font-size: 1.2rem;
+}
+
+/* ===========================
+   ENHANCED BUTTONS
+   =========================== */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 32px;
+    border-radius: var(--pp-radius);
+    font-weight: 700;
+    text-decoration: none;
+    transition: var(--pp-transition);
+    cursor: pointer;
+    border: none;
+    font-size: 1.1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(102, 126, 234, 0.5);
+    color: white;
+    text-decoration: none;
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--pp-primary);
+    border: 2px solid var(--pp-primary);
+}
+
+.btn-outline:hover {
+    background: var(--pp-primary);
+    color: white;
+    transform: translateY(-2px);
+    text-decoration: none;
+}
 
 /* ===========================
    LOADING ANIMATIONS
    =========================== */
+
+/* Hero and floating animations */
+@keyframes float {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(-30px, -30px) rotate(180deg); }
+}
+
+@keyframes expandLine {
+    from { width: 0; }
+    to { width: 60%; }
+}
+
+@keyframes float-cards {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
 
 @keyframes fadeInUp {
     from {
@@ -419,7 +716,40 @@
    MOBILE RESPONSIVE ENHANCEMENTS
    =========================== */
 
+@media (max-width: 1024px) {
+    .floating-stats {
+        display: none;
+    }
+    
+    .hero-section {
+        text-align: center;
+        padding: 120px 0 80px;
+    }
+    
+    .trust-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+    }
+}
+
 @media (max-width: 768px) {
+    .hero-section {
+        padding: 100px 0 60px;
+        min-height: auto;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+        text-align: center;
+    }
+    
     .services-grid,
     .testimonials-slider,
     .results-grid {
@@ -459,6 +789,11 @@
     
     .result-number {
         font-size: 3rem;
+    }
+    
+    .btn {
+        padding: 16px 24px;
+        font-size: 1rem;
     }
 }
 
