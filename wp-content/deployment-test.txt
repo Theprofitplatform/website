@@ -1,0 +1,11 @@
+Deployment Test - The Profit Platform
+=====================================
+Date: 2025-08-28
+Test: GitHub Actions to Hostinger FTP
+
+If you can see this file in your Hostinger file manager at:
+public_html/wp-content/deployment-test.txt
+
+Then the deployment is working correctly!
+
+This file can be deleted after verification.
