@@ -3,7 +3,7 @@
  * Plugin Name: The Profit Platform - Site Enhancements
  * Plugin URI: https://theprofitplatform.com.au
  * Description: Custom functionality and enhancements for The Profit Platform website. Includes lead tracking, analytics integration, and marketing automation features.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: The Profit Platform
  * Author URI: https://theprofitplatform.com.au
  * License: GPL v2 or later
