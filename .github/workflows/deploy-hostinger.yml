@@ -23,26 +23,15 @@ jobs:
         port: ${{ secrets.FTP_PORT }}
         protocol: ftps # Secure FTP
         
-        # Upload to WordPress directories
-        local-dir: ./
-        server-dir: public_html/
+        # Upload only WordPress content to correct directories
+        local-dir: ./wp-content/
+        server-dir: public_html/wp-content/
         
-        # Exclude files that shouldn't be uploaded
+        # Additional options
         exclude: |
           **/.git*
-          **/.git*/**
-          **/node_modules/**
-          **/README.md
-          **/.github/**
-          **/scripts/**
           **/.DS_Store
           **/Thumbs.db
-          **/.vscode/**
-          
-        # Only upload WordPress content
-        include: |
-          wp-content/themes/kadence-pp-child/**
-          wp-content/plugins/pp-site/**
           
         # Additional options
         dry-run: false # Set to true for testing
