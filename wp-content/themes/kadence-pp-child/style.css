@@ -1,0 +1,373 @@
+/*
+Theme Name: Kadence The Profit Platform Child
+Description: Child theme of Kadence for The Profit Platform - Sydney's Premier Digital Marketing Agency
+Author: The Profit Platform
+Author URI: https://theprofitplatform.com.au
+Template: kadence
+Version: 1.0.2
+License: GPL v2 or later
+Text Domain: kadence-pp-child
+*/
+
+/* 
+ * Parent theme styles are loaded via functions.php
+ * Custom styles start below
+ */
+
+/* ===========================
+   THE PROFIT PLATFORM BRANDING
+   =========================== */
+
+:root {
+    /* Primary Brand Colors */
+    --pp-primary: #2c86f9;
+    --pp-primary-dark: #1e6ee8;
+    --pp-primary-light: #5aa3fb;
+    
+    /* Secondary Colors */
+    --pp-secondary: #0f172a;
+    --pp-accent: #10b981;
+    --pp-warning: #f59e0b;
+    --pp-danger: #ef4444;
+    
+    /* Neutral Colors */
+    --pp-white: #ffffff;
+    --pp-gray-50: #f8fafc;
+    --pp-gray-100: #f1f5f9;
+    --pp-gray-200: #e2e8f0;
+    --pp-gray-300: #cbd5e1;
+    --pp-gray-400: #94a3b8;
+    --pp-gray-500: #64748b;
+    --pp-gray-600: #475569;
+    --pp-gray-700: #334155;
+    --pp-gray-800: #1e293b;
+    --pp-gray-900: #0f172a;
+    
+    /* Typography */
+    --pp-font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --pp-font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    
+    /* Spacing & Layout */
+    --pp-container-width: 1280px;
+    --pp-border-radius: 12px;
+    --pp-border-radius-lg: 20px;
+    --pp-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+    --pp-shadow-lg: 0 20px 40px rgba(15, 23, 42, 0.12);
+    --pp-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===========================
+   TYPOGRAPHY OVERRIDES
+   =========================== */
+
+body {
+    font-family: var(--pp-font-primary);
+    color: var(--pp-gray-800);
+    line-height: 1.7;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--pp-font-heading);
+    font-weight: 700;
+    color: var(--pp-gray-900);
+    line-height: 1.3;
+}
+
+h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+h3 {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 600;
+}
+
+/* ===========================
+   BUTTON STYLES
+   =========================== */
+
+.btn-primary,
+.wp-block-button__link,
+.kadence-button {
+    background: linear-gradient(135deg, var(--pp-primary), var(--pp-primary-dark));
+    color: white !important;
+    border: none;
+    border-radius: var(--pp-border-radius);
+    padding: 16px 32px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--pp-transition);
+    box-shadow: 0 4px 14px rgba(44, 134, 249, 0.3);
+}
+
+.btn-primary:hover,
+.wp-block-button__link:hover,
+.kadence-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(44, 134, 249, 0.4);
+    color: white !important;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--pp-primary);
+    border: 2px solid var(--pp-primary);
+    border-radius: var(--pp-border-radius);
+    padding: 16px 32px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--pp-transition);
+}
+
+.btn-secondary:hover {
+    background: var(--pp-primary);
+    color: white !important;
+    transform: translateY(-2px);
+}
+
+/* ===========================
+   HEADER CUSTOMIZATIONS
+   =========================== */
+
+.site-header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(44, 134, 249, 0.1);
+    box-shadow: 0 1px 20px rgba(0, 0, 0, 0.03);
+}
+
+.site-branding .custom-logo {
+    max-height: 60px;
+    width: auto;
+}
+
+.main-navigation ul li a {
+    color: var(--pp-gray-700);
+    font-weight: 600;
+    transition: var(--pp-transition);
+    padding: 12px 16px;
+    border-radius: 8px;
+}
+
+.main-navigation ul li a:hover {
+    color: var(--pp-primary);
+    background: rgba(44, 134, 249, 0.05);
+    transform: translateY(-1px);
+}
+
+/* ===========================
+   HERO SECTION STYLES
+   =========================== */
+
+.hero-section {
+    background: linear-gradient(135deg, #f8fafc 0%, #fff 50%, #f0f9ff 100%);
+    padding: 120px 0 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(44, 134, 249, 0.05) 0%, transparent 70%);
+    animation: heroFloat 20s ease-in-out infinite;
+}
+
+@keyframes heroFloat {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(-30px, -30px) rotate(180deg); }
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 5.5vw, 4.2rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.hero-subtitle {
+    font-size: 1.35rem;
+    color: var(--pp-gray-600);
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+/* ===========================
+   CARDS & SECTIONS
+   =========================== */
+
+.service-card,
+.result-card,
+.testimonial-card {
+    background: white;
+    border-radius: var(--pp-border-radius-lg);
+    padding: 40px 30px;
+    box-shadow: var(--pp-shadow);
+    transition: var(--pp-transition);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.service-card:hover,
+.result-card:hover,
+.testimonial-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--pp-shadow-lg);
+}
+
+/* ===========================
+   CONTACT FORMS
+   =========================== */
+
+.wpcf7-form-control {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid var(--pp-gray-200);
+    border-radius: var(--pp-border-radius);
+    font-size: 1rem;
+    transition: var(--pp-transition);
+    background: white;
+    font-family: inherit;
+}
+
+.wpcf7-form-control:focus {
+    outline: none;
+    border-color: var(--pp-primary);
+    box-shadow: 0 0 0 3px rgba(44, 134, 249, 0.1);
+}
+
+.wpcf7-submit {
+    background: linear-gradient(135deg, var(--pp-primary), var(--pp-primary-dark));
+    color: white !important;
+    border: none;
+    border-radius: var(--pp-border-radius);
+    padding: 18px 32px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: var(--pp-transition);
+    box-shadow: 0 4px 14px rgba(44, 134, 249, 0.3);
+}
+
+.wpcf7-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(44, 134, 249, 0.4);
+}
+
+/* ===========================
+   FOOTER CUSTOMIZATIONS
+   =========================== */
+
+.site-footer {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    color: white;
+    padding: 80px 0 40px;
+}
+
+.site-footer .widget-title {
+    color: white;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.site-footer a {
+    color: rgba(255, 255, 255, 0.75);
+    transition: var(--pp-transition);
+}
+
+.site-footer a:hover {
+    color: var(--pp-primary);
+}
+
+/* ===========================
+   MOBILE RESPONSIVE
+   =========================== */
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 80px 0 60px;
+    }
+    
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .service-card,
+    .result-card,
+    .testimonial-card {
+        padding: 30px 20px;
+    }
+    
+    .btn-primary,
+    .btn-secondary,
+    .wpcf7-submit {
+        width: 100%;
+        justify-content: center;
+        padding: 16px 24px;
+    }
+}
+
+/* ===========================
+   UTILITY CLASSES
+   =========================== */
+
+.text-primary { color: var(--pp-primary) !important; }
+.text-secondary { color: var(--pp-gray-600) !important; }
+.bg-primary { background-color: var(--pp-primary) !important; }
+.bg-light { background-color: var(--pp-gray-50) !important; }
+
+.shadow-sm { box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); }
+.shadow { box-shadow: var(--pp-shadow); }
+.shadow-lg { box-shadow: var(--pp-shadow-lg); }
+
+.rounded { border-radius: var(--pp-border-radius); }
+.rounded-lg { border-radius: var(--pp-border-radius-lg); }
+
+.transition { transition: var(--pp-transition); }
+
+/* Hide elements that should not appear */
+.hide-on-mobile { display: block; }
+
+@media (max-width: 768px) {
+    .hide-on-mobile { display: none !important; }
+    .show-on-mobile { display: block !important; }
+}
+
+.show-on-mobile { display: none; }
+
+/* ===========================
+   PERFORMANCE OPTIMIZATIONS
+   =========================== */
+
+/* Optimize images */
+img {
+    height: auto;
+    max-width: 100%;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}

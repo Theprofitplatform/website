@@ -1,0 +1,61 @@
+name: Deploy to Hostinger
+
+on:
+  push:
+    branches: [ master, main ]
+  workflow_dispatch: # Allows manual trigger
+
+jobs:
+  deploy:
+    name: Deploy to Hostinger via FTP
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 🚚 Checkout code
+      uses: actions/checkout@v4
+      
+    - name: 🔍 Debug - List local files
+      run: |
+        echo "=== Local wp-content structure ==="
+        find ./wp-content -type f | head -20
+        echo "=== Theme files ==="
+        ls -la ./wp-content/themes/kadence-pp-child/
+        
+    - name: 📂 Sync files to Hostinger
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        port: ${{ secrets.FTP_PORT }}
+        protocol: ftp # Regular FTP (not FTPS)
+        
+        # Upload only WordPress content to correct directories
+        local-dir: ./wp-content/
+        server-dir: public_html/wp-content/
+        
+        # Additional options
+        exclude: |
+          **/.git*
+          **/.DS_Store
+          **/Thumbs.db
+          
+        # Force upload and verbose logging
+        dry-run: false
+        log-level: verbose
+        dangerous-clean-slate: false
+        
+    - name: ✅ Deployment complete
+      run: |
+        echo "🎉 Successfully deployed to Hostinger!"
+        echo "🌐 Site: https://theprofitplatform.com.au"
+        echo "📅 Deployed at: $(date)"
+        
+    - name: 🔔 Notify deployment status
+      if: always()
+      run: |
+        if [ "${{ job.status }}" == "success" ]; then
+          echo "✅ Deployment successful"
+        else
+          echo "❌ Deployment failed - check logs"
+        fi
