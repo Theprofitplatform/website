@@ -1,12 +1,12 @@
 <?php
 /**
- * The main template file for Kadence The Profit Platform Child Theme
+ * The main template file
  * 
- * This file is used when a more specific template can't be found
- * Falls back to parent theme's index.php
+ * This file exists to make the child theme complete.
+ * All actual templates are inherited from the parent Kadence theme.
  * 
  * @package Kadence_PP_Child
- * @version 1.0.0
+ * @version 1.0.2
  */
 
 // Prevent direct access
@@ -14,5 +14,6 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-// Load parent theme's index.php
+// Load the parent theme's index template
 get_template_part('index');
+?>

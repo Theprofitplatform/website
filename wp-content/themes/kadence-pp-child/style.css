@@ -4,13 +4,15 @@ Description: Child theme of Kadence for The Profit Platform - Sydney's Premier D
 Author: The Profit Platform
 Author URI: https://theprofitplatform.com.au
 Template: kadence
-Version: 1.0.1
+Version: 1.0.2
 License: GPL v2 or later
 Text Domain: kadence-pp-child
 */
 
-/* Import parent theme styles */
-@import url("../kadence/style.css");
+/* 
+ * Parent theme styles are loaded via functions.php
+ * Custom styles start below
+ */
 
 /* ===========================
    THE PROFIT PLATFORM BRANDING

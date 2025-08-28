@@ -13,7 +13,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('KADENCE_PP_CHILD_VERSION', '1.0.0');
+define('KADENCE_PP_CHILD_VERSION', '1.0.2');
 define('KADENCE_PP_CHILD_PATH', get_stylesheet_directory());
 define('KADENCE_PP_CHILD_URL', get_stylesheet_directory_uri());
 
