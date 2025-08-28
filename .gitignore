@@ -82,3 +82,36 @@ wp-config-sample.php
 # Plugin and theme development
 wp-content/themes/*/node_modules/
 wp-content/plugins/*/node_modules/
+
+# CLEANUP - Don't track these
+/Wordpress file directory/
+/Archive/
+/website/
+/scripts/
+.claude/
+
+# Old HTML files (using WordPress now)
+blog-admin.html
+blog-template.html
+contact.html
+google-ads-landing.html
+homepage.html
+pricing.html
+seo-landing.html
+services.html
+about.html
+
+# Test files
+auto-test.txt
+deployment-test*.txt
+
+# Deleted .md files
+contact-form-kadence.md
+deployment-strategy.md
+faq-kadence-blocks.md
+hostinger-git-setup.md
+kadence-blocks-structure.md
+rank-math-seo-guide.md
+wordpress-implementation-guide.md
+wp-kadence-implementation-steps.md
+"The Profit Platform - Website & Automation Roadmap.md"
