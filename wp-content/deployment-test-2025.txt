@@ -1,0 +1,18 @@
+Deployment Test - The Profit Platform
+=====================================
+Date: 2025-08-28
+Repository: website.git
+Deployment: GitHub Actions to Hostinger FTP
+
+This file tests the automated deployment workflow.
+If you can see this file on your Hostinger server at:
+public_html/wp-content/deployment-test-2025.txt
+
+Then the deployment is working correctly!
+
+Next Steps:
+1. Add FTP credentials to GitHub Secrets
+2. Push this file to trigger deployment
+3. Check Hostinger file manager
+
+This file can be deleted after verification.
