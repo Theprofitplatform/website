@@ -1,0 +1,494 @@
+/**
+ * Profit Platform Phase 1 - Admin Styles
+ * Integrates with Kadence Theme and Rank Math SEO
+ */
+
+/* Dashboard Styles */
+.pp-dashboard {
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.pp-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.pp-stat-card {
+    background: white;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pp-stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.pp-stat-card .stat-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.pp-stat-card .stat-value {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #2c86f9;
+    margin-bottom: 10px;
+}
+
+.pp-stat-card .stat-label {
+    font-size: 0.9rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Quick Actions */
+.pp-quick-actions {
+    margin-top: 40px;
+}
+
+.pp-action-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.pp-action-card {
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.pp-action-card:hover {
+    border-color: #2c86f9;
+    box-shadow: 0 4px 12px rgba(44, 134, 249, 0.2);
+    text-decoration: none;
+    color: #333;
+}
+
+.pp-action-card .dashicons {
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+    color: #2c86f9;
+    margin-bottom: 10px;
+}
+
+.pp-action-card h3 {
+    margin: 10px 0;
+    font-size: 1.1rem;
+    color: #1e293b;
+}
+
+.pp-action-card p {
+    margin: 0;
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+/* Homepage Builder */
+.pp-homepage-builder {
+    max-width: 1200px;
+    margin: 20px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pp-builder-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0;
+}
+
+.tab-button {
+    background: none;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    color: #64748b;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s ease;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+}
+
+.tab-button:hover {
+    color: #2c86f9;
+}
+
+.tab-button.active {
+    color: #2c86f9;
+    font-weight: 600;
+    border-bottom-color: #2c86f9;
+}
+
+.pp-tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.pp-tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Form Elements */
+.pp-form-group {
+    margin-bottom: 25px;
+}
+
+.pp-form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #1e293b;
+    font-size: 0.95rem;
+}
+
+.pp-form-control {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.pp-form-control:focus {
+    outline: none;
+    border-color: #2c86f9;
+    box-shadow: 0 0 0 3px rgba(44, 134, 249, 0.1);
+}
+
+textarea.pp-form-control {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.pp-help {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.85rem;
+    color: #64748b;
+    font-style: italic;
+}
+
+.char-count {
+    float: right;
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin-top: 5px;
+}
+
+/* SEO Settings */
+.pp-seo-settings {
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.pp-seo-score-widget {
+    background: white;
+    border-radius: 8px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.score-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #10b981, #059669);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.score-details {
+    flex: 1;
+}
+
+.score-details h3 {
+    margin: 0 0 15px;
+    font-size: 1.3rem;
+    color: #1e293b;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background: #e2e8f0;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #10b981, #059669);
+    transition: width 0.5s ease;
+}
+
+/* Lead Forms */
+.pp-lead-forms {
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.pp-form-builder {
+    background: white;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pp-field-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0;
+    padding: 20px;
+    background: #f8fafc;
+    border-radius: 4px;
+}
+
+.pp-field-list label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.pp-field-list label:hover {
+    background: white;
+    border-radius: 4px;
+}
+
+.pp-placement-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 20px 0;
+}
+
+/* Buttons */
+.pp-builder-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.pp-save-content,
+.pp-save-seo,
+.pp-save-forms {
+    background: #2c86f9;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.pp-save-content:hover,
+.pp-save-seo:hover,
+.pp-save-forms:hover {
+    background: #1e6ee8;
+}
+
+.pp-preview-content,
+.pp-export-content {
+    background: white;
+    color: #2c86f9;
+    padding: 10px 20px;
+    border: 2px solid #2c86f9;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pp-preview-content:hover,
+.pp-export-content:hover {
+    background: #2c86f9;
+    color: white;
+}
+
+/* Contact Form Shortcode Styles */
+.pp-contact-form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.pp-form-field {
+    margin-bottom: 20px;
+}
+
+.pp-form-field label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #333;
+}
+
+.pp-form-field input,
+.pp-form-field select,
+.pp-form-field textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.pp-submit-btn {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+}
+
+.pp-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+}
+
+/* Notices */
+.notice {
+    margin: 20px 0;
+    padding: 12px;
+}
+
+.notice-success {
+    border-left-color: #10b981;
+}
+
+.notice-warning {
+    border-left-color: #f59e0b;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .pp-stats-grid,
+    .pp-action-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .pp-builder-tabs {
+        flex-wrap: wrap;
+    }
+    
+    .pp-seo-score-widget {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .pp-placement-options {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Loading State */
+.pp-loading {
+    opacity: 0.6;
+    pointer-events: none;
+    position: relative;
+}
+
+.pp-loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    margin: -15px 0 0 -15px;
+    border: 3px solid #2c86f9;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Success Message */
+.pp-success-message {
+    background: #10b981;
+    color: white;
+    padding: 15px;
+    border-radius: 4px;
+    margin: 20px 0;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from { 
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Kadence Theme Integration */
+.kadence-theme-active .pp-form-control {
+    font-family: var(--global-body-font-family);
+}
+
+.kadence-theme-active .pp-submit-btn {
+    background: var(--global-palette1);
+}
+
+/* Rank Math Integration Notice */
+.rank-math-active {
+    display: inline-block;
+    background: #10b981;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    margin-left: 10px;
+}
